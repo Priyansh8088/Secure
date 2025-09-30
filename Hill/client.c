@@ -1,4 +1,3 @@
-// hill_client.c - Windows version
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -14,7 +13,6 @@ void encrypt(char *text) {
     char result[1024];
     int idx = 0;
 
-    // Convert to uppercase and remove non-alphabetic chars
     char clean[1024];
     int clean_idx = 0;
     for (int i = 0; i < len; i++) {
@@ -24,7 +22,6 @@ void encrypt(char *text) {
     }
     clean[clean_idx] = '\0';
 
-    // Pad with X if odd length
     if (clean_idx % 2 != 0) {
         clean[clean_idx++] = 'X';
         clean[clean_idx] = '\0';

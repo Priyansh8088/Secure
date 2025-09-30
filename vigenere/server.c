@@ -1,4 +1,3 @@
-// vigenere_server.c - Windows version
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>

@@ -1,4 +1,3 @@
-// playfair_server.c - Windows version
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -14,9 +13,8 @@ void create_matrix(char *key) {
     int used[26] = {0};
     int idx = 0;
 
-    used['J' - 'A'] = 1; // Treat I and J as same
+    used['J' - 'A'] = 1;
 
-    // Add key characters
     for (int i = 0; key[i] != '\0'; i++) {
         char c = toupper(key[i]);
         if (c >= 'A' && c <= 'Z' && !used[c - 'A']) {
@@ -27,7 +25,6 @@ void create_matrix(char *key) {
         }
     }
 
-    // Add remaining letters
     for (char c = 'A'; c <= 'Z'; c++) {
         if (!used[c - 'A']) {
             if (c == 'J') continue;
@@ -63,15 +60,12 @@ void decrypt(char *text) {
         find_position(text[i + 1], &r2, &c2);
 
         if (r1 == r2) {
-            // Same row - move left
             result[idx++] = matrix[r1][(c1 + 4) % 5];
             result[idx++] = matrix[r2][(c2 + 4) % 5];
         } else if (c1 == c2) {
-            // Same column - move up
             result[idx++] = matrix[(r1 + 4) % 5][c1];
             result[idx++] = matrix[(r2 + 4) % 5][c2];
         } else {
-            // Rectangle - swap columns
             result[idx++] = matrix[r1][c2];
             result[idx++] = matrix[r2][c1];
         }

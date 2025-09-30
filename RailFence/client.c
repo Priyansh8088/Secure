@@ -1,4 +1,3 @@
-// railfence_client.c - Windows version
 #include <stdio.h>
 #include <string.h>
 #include <winsock2.h>
@@ -18,7 +17,7 @@ void encrypt(char *text, int rails) {
         }
     }
 
-    // Fill grid in zigzag pattern
+
     int row = 0, dir = 1;
     for (int col = 0; col < len; col++) {
         grid[row][col] = text[col];
@@ -27,7 +26,7 @@ void encrypt(char *text, int rails) {
         row += dir;
     }
 
-    // Read row by row
+
     char result[1024];
     int idx = 0;
     for (int i = 0; i < rails; i++) {

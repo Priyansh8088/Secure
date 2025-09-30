@@ -1,4 +1,3 @@
-// client.c - Windows version
 #include <stdio.h>
 #include <string.h>
 #include <winsock2.h>

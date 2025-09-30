@@ -1,4 +1,3 @@
-// playfair_client.c - Windows version
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -52,13 +51,11 @@ void encrypt(char *text) {
     char clean[1024];
     int clean_idx = 0;
 
-    // Clean text - remove non-alpha, convert to uppercase
     for (int i = 0; text[i] != '\0'; i++) {
         if (isalpha(text[i])) {
             char c = toupper(text[i]);
             if (c == 'J') c = 'I';
 
-            // Insert X between double letters
             if (clean_idx > 0 && clean[clean_idx - 1] == c) {
                 clean[clean_idx++] = 'X';
             }
@@ -66,7 +63,6 @@ void encrypt(char *text) {
         }
     }
 
-    // Pad with X if odd length
     if (clean_idx % 2 != 0) {
         clean[clean_idx++] = 'X';
     }
@@ -81,15 +77,12 @@ void encrypt(char *text) {
         find_position(clean[i + 1], &r2, &c2);
 
         if (r1 == r2) {
-            // Same row - move right
             result[idx++] = matrix[r1][(c1 + 1) % 5];
             result[idx++] = matrix[r2][(c2 + 1) % 5];
         } else if (c1 == c2) {
-            // Same column - move down
             result[idx++] = matrix[(r1 + 1) % 5][c1];
             result[idx++] = matrix[(r2 + 1) % 5][c2];
         } else {
-            // Rectangle - swap columns
             result[idx++] = matrix[r1][c2];
             result[idx++] = matrix[r2][c1];
         }

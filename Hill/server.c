@@ -1,4 +1,3 @@
-// hill_server.c - Windows version
 #include <stdio.h>
 #include <string.h>
 #include <winsock2.h>
@@ -6,9 +5,9 @@
 
 #define PORT 8082
 
-// Key matrix [[3,3],[2,5]] with determinant 9, inverse exists
+
 int key[2][2] = {{3, 3}, {2, 5}};
-int inv_key[2][2] = {{15, 17}, {20, 9}}; // Modular inverse of key matrix
+int inv_key[2][2] = {{15, 17}, {20, 9}};
 
 void decrypt(char *text) {
     int len = strlen(text);

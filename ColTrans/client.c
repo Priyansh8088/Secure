@@ -1,4 +1,3 @@
-// columnar_client.c - Windows version
 #include <stdio.h>
 #include <string.h>
 #include <winsock2.h>
@@ -15,14 +14,14 @@ void encrypt(char *text, char *key) {
     char grid[20][10] = {0};
     int idx = 0;
 
-    // Fill grid row by row
+
     for (int row = 0; row < rows; row++) {
         for (int col = 0; col < keylen && idx < len; col++) {
             grid[row][col] = text[idx++];
         }
     }
 
-    // Create column order based on alphabetical key
+
     int order[10];
     char sorted_key[10];
     strcpy(sorted_key, key);
@@ -51,7 +50,6 @@ void encrypt(char *text, char *key) {
         }
     }
 
-    // Read column by column in sorted order
     idx = 0;
     for (int col = 0; col < keylen; col++) {
         int actual_col = 0;
